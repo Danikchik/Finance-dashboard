@@ -1,0 +1,253 @@
+@use "../styles/tokens" as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(18, 36, 29, 0.5);
+  animation: backdrop-in 0.2s ease-out;
+
+  @include mobile {
+    align-items: flex-end;
+    padding: 0;
+  }
+}
+
+.modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  padding: 24px;
+  border-radius: $radius-lg;
+  background: $surface;
+  box-shadow: 0 24px 60px rgba(18, 36, 29, 0.28);
+  animation: modal-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  @include mobile {
+    max-height: 92vh;
+    border-radius: $radius-lg $radius-lg 0 0;
+    animation-name: sheet-in;
+  }
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.modal__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #e8efe9;
+  color: $green-700;
+
+  &--danger {
+    background: #fbeae6;
+    color: $expense;
+  }
+}
+
+.modal__titles {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    margin-top: 2px;
+    font-size: 14px;
+    color: $muted;
+  }
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+
+  .btn {
+    min-width: 110px;
+  }
+}
+
+
+.confirm__message {
+  color: #3f4a44;
+}
+
+.confirm__details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: $radius-sm;
+  background: $bg;
+  border: 1px solid $line;
+
+  strong {
+    display: block;
+  }
+
+  span {
+    font-size: 14px;
+    color: $muted;
+  }
+}
+
+
+.field .amount-field {
+  position: relative;
+
+  span {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: $font-display;
+    font-size: 22px;
+    font-weight: 500;
+    color: $muted;
+    pointer-events: none;
+  }
+
+  input {
+    padding: 12px 14px 12px 40px;
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+.type-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border-radius: $radius-sm;
+  background: #e6ebe5;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: $muted;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+
+    &.is-active {
+      background: $surface;
+      box-shadow: 0 1px 2px rgba(21, 33, 28, 0.14);
+    }
+
+    &.is-active.expense {
+      color: $expense;
+    }
+
+    &.is-active.income {
+      color: $income;
+    }
+  }
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  &--two {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  border: 1px solid $line-strong;
+  border-radius: $radius-sm;
+  background: $surface;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover {
+    border-color: #b5beb4;
+  }
+
+  &.is-active {
+    border-color: $green-700;
+    background: #eef5f0;
+    box-shadow: inset 0 0 0 1px $green-700;
+  }
+}
+
+.field__label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}

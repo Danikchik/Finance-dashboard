@@ -1,0 +1,76 @@
+@use "../styles/tokens" as *;
+
+.toast-area {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 50;
+  transform: translateX(-50%);
+
+  @include mobile {
+    bottom: 88px;
+    width: calc(100% - 32px);
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px 12px 14px;
+  border-radius: $radius-md;
+  background: $green-900;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(18, 58, 46, 0.25);
+  animation: toast-in 0.25s ease-out;
+}
+
+.toast__icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: $saffron;
+  color: $green-900;
+  flex-shrink: 0;
+}
+
+.toast__action {
+  margin-left: 8px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  color: $saffron;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+.toast__close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

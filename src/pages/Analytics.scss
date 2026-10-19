@@ -1,0 +1,109 @@
+@use "../styles/tokens" as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  background: $surface;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  strong {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+}
+
+.stat__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #e8efe9;
+  color: $green-700;
+
+  &--in {
+    background: #e1f3e9;
+    color: $income;
+  }
+
+  &--out {
+    background: #fbeae6;
+    color: $expense;
+  }
+}
+
+.analytics .panel + .panel {
+  margin-top: 20px;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: $muted;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+}
+
+.chart {
+  height: 300px;
+}
+
+.bars {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bars__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.bars__track {
+  height: 8px;
+  border-radius: 4px;
+  background: #eaeee9;
+}
+
+.bars__fill {
+  height: 100%;
+  border-radius: 4px;
+}

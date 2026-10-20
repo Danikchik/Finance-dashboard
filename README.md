@@ -2,7 +2,7 @@
 
 A personal finance dashboard for tracking wallets, income and expenses. Built with React, SCSS and Recharts. No backend: all data stays in your browser.
 
-**Live demo:** https://YOUR-LIVE-URL.vercel.app
+**Live demo:** https://finance-dashboard-three-olive.vercel.app/
 
 > This is a portfolio project. Please don't enter real financial data.
 
